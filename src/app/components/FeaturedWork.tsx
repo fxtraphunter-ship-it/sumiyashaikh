@@ -75,13 +75,13 @@ export default function FeaturedWork() {
       solution: "Crafted vibrant, on-brand visual content including thumbnails, flyers, social posts, and product designs.",
       result: "Increased engagement across all platforms with memorable, conversion-focused designs.",
       images: [
-        "/images/project1.png",
-        "/images/project2.png",
-        "/images/project3.png",
-        "/images/project4.png",
-        "/images/project5.png",
-        "/images/project6.png",
-        "/images/project7.png"
+        "https://images.unsplash.com/photo-1687211980289-ba127aa649e8?w=1200&q=80",
+        "https://images.unsplash.com/photo-1759350075520-5d0609b7e043?w=1200&q=80",
+        "https://images.unsplash.com/photo-1754681920848-d20733e4ef23?w=1200&q=80",
+        "https://images.unsplash.com/photo-1760172287502-3c1cc1ccafbe?w=1200&q=80",
+        "https://images.unsplash.com/photo-1633533451997-8b6079082e3d?w=1200&q=80",
+        "https://images.unsplash.com/photo-1676893705062-036952a6727f?w=1200&q=80",
+        "https://images.unsplash.com/photo-1773934714242-49361d0747f4?w=1200&q=80"
       ],
       tags: ["Graphic Design", "Social Media", "Branding"],
     },
