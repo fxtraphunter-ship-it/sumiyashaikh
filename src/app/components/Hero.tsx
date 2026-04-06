@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import heroImage from "figma:asset/96aebeb406354b4349d3e1ca166f0d49b2f89602.png";
 
 export default function Hero() {
   return (
@@ -26,7 +25,7 @@ export default function Hero() {
             <div className="relative w-full max-w-[320px]">
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
                 <img
-                  src={heroImage}
+                  src="/images/profile.png"
                   alt="Sumiya Shaikh"
                   className="w-full h-auto object-cover aspect-[3/4]"
                 />

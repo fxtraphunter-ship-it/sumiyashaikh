@@ -1,13 +1,6 @@
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
-import graphicImg1 from "figma:asset/3334aae812a2a652935dd68346cc30c6da8eb0bb.png";
-import graphicImg2 from "figma:asset/c680a2fa0fc1c04e221105fe484736932a18118e.png";
-import graphicImg3 from "figma:asset/fb978142b7437b23dd3f659d65691ad904ace40a.png";
-import graphicImg4 from "figma:asset/1e08eb64eb24a6ffdf6c2cae7b33e479315c09a9.png";
-import graphicImg5 from "figma:asset/78a4286c8a6ae8821ce40d3e1fd19e5fa1890ddc.png";
-import graphicImg6 from "figma:asset/3a8df25426af07f84f0541e55083a0e97c54323f.png";
-import graphicImg7 from "figma:asset/0a32b01b09588606010c0219b5cd55348b661fc6.png";
 
 export default function FeaturedWork() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
@@ -82,13 +75,13 @@ export default function FeaturedWork() {
       solution: "Crafted vibrant, on-brand visual content including thumbnails, flyers, social posts, and product designs.",
       result: "Increased engagement across all platforms with memorable, conversion-focused designs.",
       images: [
-        graphicImg1,
-        graphicImg2,
-        graphicImg3,
-        graphicImg4,
-        graphicImg5,
-        graphicImg6,
-        graphicImg7
+        "/images/project1.png",
+        "/images/project2.png",
+        "/images/project3.png",
+        "/images/project4.png",
+        "/images/project5.png",
+        "/images/project6.png",
+        "/images/project7.png"
       ],
       tags: ["Graphic Design", "Social Media", "Branding"],
     },
