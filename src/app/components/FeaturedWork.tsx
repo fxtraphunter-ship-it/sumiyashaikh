@@ -135,17 +135,25 @@ export default function FeaturedWork() {
     focusOnSelect: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 2,
+          centerMode: true,
+        },
+      },
+      {
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           centerMode: true,
+          centerPadding: "20px",
         },
       },
     ],
   };
 
   return (
-    <section id="work" className="py-20 px-6">
+    <section id="work" className="py-12 md:py-20 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -153,10 +161,10 @@ export default function FeaturedWork() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2
-            className="text-5xl lg:text-6xl mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl mb-3 md:mb-4"
             style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 800 }}
           >
             <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -164,7 +172,7 @@ export default function FeaturedWork() {
             </span>
           </h2>
           <p
-            className="text-white/70 text-lg max-w-2xl mx-auto"
+            className="text-white/70 text-base md:text-lg max-w-2xl mx-auto px-4"
             style={{ fontFamily: 'Poppins, sans-serif' }}
           >
             A curated collection of my best design work across multiple disciplines
@@ -177,7 +185,7 @@ export default function FeaturedWork() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8 md:mb-12 px-2"
         >
           {filters.map((filter) => (
             <motion.button
@@ -188,7 +196,7 @@ export default function FeaturedWork() {
                 setActiveFilter(filter.id);
                 sliderRef.current?.slickGoTo(0);
               }}
-              className={`px-6 py-3 rounded-full backdrop-blur-xl border transition-all ${
+              className={`px-4 md:px-6 py-2 md:py-3 text-sm md:text-base rounded-full backdrop-blur-xl border transition-all ${
                 activeFilter === filter.id
                   ? "bg-gradient-to-r from-purple-500 to-blue-500 border-transparent text-white shadow-lg"
                   : "bg-white/10 border-white/20 text-white/70 hover:text-white hover:border-white/30"
@@ -208,33 +216,33 @@ export default function FeaturedWork() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative px-4"
+            className="relative px-2 md:px-4"
           >
             {/* Custom Arrow Buttons */}
             <button
               onClick={() => sliderRef.current?.slickPrev()}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full backdrop-blur-xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all shadow-xl"
+              className="absolute left-0 md:left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full backdrop-blur-xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all shadow-xl"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
             </button>
 
             <button
               onClick={() => sliderRef.current?.slickNext()}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full backdrop-blur-xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all shadow-xl"
+              className="absolute right-0 md:right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full backdrop-blur-xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all shadow-xl"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
             </button>
 
             <Slider ref={sliderRef} {...sliderSettings}>
               {filteredProjects.map((project) => (
-                <div key={project.id} className="px-4">
+                <div key={project.id} className="px-2 md:px-4">
                   <motion.div
                     whileHover={{ y: -10 }}
-                    className="group relative backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl overflow-hidden shadow-2xl mx-auto"
-                    style={{ maxWidth: "500px" }}
+                    className="group relative backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl md:rounded-2xl overflow-hidden shadow-2xl mx-auto"
+                    style={{ maxWidth: "750px" }}
                   >
                     {/* Image */}
-                    <div className="relative overflow-hidden aspect-video">
+                    <div className="relative overflow-hidden aspect-[4/3]">
                       {project.isExternal ? (
                         <ImageWithFallback
                           src={project.image}
@@ -255,23 +263,23 @@ export default function FeaturedWork() {
                         <motion.div
                           initial={{ scale: 0 }}
                           whileHover={{ scale: 1 }}
-                          className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center"
+                          className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center"
                         >
-                          <ExternalLink className="w-7 h-7 text-white" />
+                          <ExternalLink className="w-8 h-8 md:w-10 md:h-10 text-white" />
                         </motion.div>
                       </div>
                     </div>
 
                     {/* Content */}
-                    <div className="p-6">
+                    <div className="p-4 md:p-6 relative z-10 bg-[#0B0B0F]/80 backdrop-blur-sm group-hover:bg-[#0B0B0F]/95 transition-all duration-300">
                       <h3
-                        className="text-xl mb-2"
+                        className="text-lg md:text-xl mb-1 md:mb-2 text-white"
                         style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 700 }}
                       >
                         {project.title}
                       </h3>
                       <p
-                        className="text-white/60 text-sm"
+                        className="text-white/70 group-hover:text-white/90 text-xs md:text-sm transition-colors duration-300"
                         style={{ fontFamily: 'Poppins, sans-serif' }}
                       >
                         {project.description}
@@ -279,8 +287,8 @@ export default function FeaturedWork() {
                     </div>
 
                     {/* Gradient Border Effect */}
-                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/50 to-blue-500/50 blur-xl"></div>
+                    <div className="absolute inset-0 rounded-xl md:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -z-10">
+                      <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-r from-purple-500/50 to-blue-500/50 blur-xl"></div>
                     </div>
                   </motion.div>
                 </div>
@@ -288,12 +296,12 @@ export default function FeaturedWork() {
             </Slider>
 
             {/* Custom Dots Indicator */}
-            <div className="flex justify-center gap-2 mt-8">
+            <div className="flex justify-center gap-1.5 md:gap-2 mt-6 md:mt-8">
               {filteredProjects.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => sliderRef.current?.slickGoTo(index)}
-                  className="w-2 h-2 rounded-full bg-white/30 hover:bg-white/60 transition-all"
+                  className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white/30 hover:bg-white/60 transition-all"
                 />
               ))}
             </div>
@@ -314,6 +322,14 @@ export default function FeaturedWork() {
         .slick-track {
           display: flex;
           align-items: center;
+        }
+        @media (max-width: 768px) {
+          .slick-slide {
+            transform: scale(0.92);
+          }
+          .slick-slide.slick-center {
+            transform: scale(1);
+          }
         }
       `}</style>
     </section>
