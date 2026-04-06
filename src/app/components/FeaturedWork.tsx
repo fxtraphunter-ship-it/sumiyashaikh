@@ -1,7 +1,10 @@
 import { motion, AnimatePresence } from "motion/react";
-import { useState } from "react";
-import { ExternalLink } from "lucide-react";
+import { useState, useRef } from "react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 // Import the provided images
 import thumbnail1 from "figma:asset/3334aae812a2a652935dd68346cc30c6da8eb0bb.png";
@@ -16,6 +19,7 @@ import marketing from "figma:asset/91b00e3302a5b2473d7b32875338c477bc2cabb2.png"
 
 export default function FeaturedWork() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const sliderRef = useRef<any>(null);
 
   const projects = [
     {
@@ -119,6 +123,27 @@ export default function FeaturedWork() {
       ? projects
       : projects.filter((p) => p.category === activeFilter);
 
+  const sliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: "0px",
+    arrows: false,
+    focusOnSelect: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          centerMode: true,
+        },
+      },
+    ],
+  };
+
   return (
     <section id="work" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
@@ -159,11 +184,14 @@ export default function FeaturedWork() {
               key={filter.id}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveFilter(filter.id)}
-              className={`px-6 py-3 rounded-full backdrop-blur-md border transition-all ${
+              onClick={() => {
+                setActiveFilter(filter.id);
+                sliderRef.current?.slickGoTo(0);
+              }}
+              className={`px-6 py-3 rounded-full backdrop-blur-xl border transition-all ${
                 activeFilter === filter.id
-                  ? "bg-gradient-to-r from-purple-500 to-blue-500 border-transparent text-white"
-                  : "bg-white/5 border-white/10 text-white/70 hover:text-white"
+                  ? "bg-gradient-to-r from-purple-500 to-blue-500 border-transparent text-white shadow-lg"
+                  : "bg-white/10 border-white/20 text-white/70 hover:text-white hover:border-white/30"
               }`}
               style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}
             >
@@ -172,80 +200,122 @@ export default function FeaturedWork() {
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
+        {/* Carousel Slider */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeFilter}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative px-4"
           >
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                whileHover={{ y: -10 }}
-                className="group relative backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl overflow-hidden shadow-xl"
-              >
-                {/* Image */}
-                <div className="relative overflow-hidden aspect-video">
-                  {project.isExternal ? (
-                    <ImageWithFallback
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  ) : (
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            {/* Custom Arrow Buttons */}
+            <button
+              onClick={() => sliderRef.current?.slickPrev()}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full backdrop-blur-xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all shadow-xl"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
 
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      whileHover={{ scale: 1 }}
-                      className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center"
-                    >
-                      <ExternalLink className="w-6 h-6 text-white" />
-                    </motion.div>
-                  </div>
-                </div>
+            <button
+              onClick={() => sliderRef.current?.slickNext()}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full backdrop-blur-xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all shadow-xl"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
 
-                {/* Content */}
-                <div className="p-6">
-                  <h3
-                    className="text-xl mb-2"
-                    style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 700 }}
+            <Slider ref={sliderRef} {...sliderSettings}>
+              {filteredProjects.map((project) => (
+                <div key={project.id} className="px-4">
+                  <motion.div
+                    whileHover={{ y: -10 }}
+                    className="group relative backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl overflow-hidden shadow-2xl mx-auto"
+                    style={{ maxWidth: "500px" }}
                   >
-                    {project.title}
-                  </h3>
-                  <p
-                    className="text-white/60 text-sm"
-                    style={{ fontFamily: 'Poppins, sans-serif' }}
-                  >
-                    {project.description}
-                  </p>
-                </div>
+                    {/* Image */}
+                    <div className="relative overflow-hidden aspect-video">
+                      {project.isExternal ? (
+                        <ImageWithFallback
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      ) : (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                {/* Gradient Border Effect */}
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/50 to-blue-500/50 blur-xl"></div>
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          whileHover={{ scale: 1 }}
+                          className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center"
+                        >
+                          <ExternalLink className="w-7 h-7 text-white" />
+                        </motion.div>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6">
+                      <h3
+                        className="text-xl mb-2"
+                        style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 700 }}
+                      >
+                        {project.title}
+                      </h3>
+                      <p
+                        className="text-white/60 text-sm"
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
+                      >
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* Gradient Border Effect */}
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/50 to-blue-500/50 blur-xl"></div>
+                    </div>
+                  </motion.div>
                 </div>
-              </motion.div>
-            ))}
+              ))}
+            </Slider>
+
+            {/* Custom Dots Indicator */}
+            <div className="flex justify-center gap-2 mt-8">
+              {filteredProjects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => sliderRef.current?.slickGoTo(index)}
+                  className="w-2 h-2 rounded-full bg-white/30 hover:bg-white/60 transition-all"
+                />
+              ))}
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>
+
+      <style>{`
+        .slick-slide {
+          transition: all 0.3s ease;
+          opacity: 0.5;
+          transform: scale(0.85);
+        }
+        .slick-slide.slick-center {
+          opacity: 1;
+          transform: scale(1);
+        }
+        .slick-track {
+          display: flex;
+          align-items: center;
+        }
+      `}</style>
     </section>
   );
 }
