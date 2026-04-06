@@ -72,26 +72,27 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="grid gap-6"
+            className="space-y-6"
           >
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                  className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-8 flex items-center gap-6"
-                >
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 p-3 flex items-center justify-center">
-                    <Icon className="w-full h-full text-white" />
-                  </div>
-                  <div>
+            {/* Stats Cards - Horizontal Row */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {stats.map((stat, index) => {
+                const Icon = stat.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center"
+                  >
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 p-3 flex items-center justify-center mb-4">
+                      <Icon className="w-full h-full text-white" />
+                    </div>
                     <div
-                      className="text-4xl mb-1"
+                      className="text-3xl mb-1"
                       style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 800 }}
                     >
                       <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
@@ -99,15 +100,15 @@ export default function About() {
                       </span>
                     </div>
                     <div
-                      className="text-white/60"
+                      className="text-white/60 text-sm"
                       style={{ fontFamily: 'Poppins, sans-serif' }}
                     >
                       {stat.label}
                     </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+                  </motion.div>
+                );
+              })}
+            </div>
 
             {/* Additional Info Card */}
             <motion.div
