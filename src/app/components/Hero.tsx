@@ -3,7 +3,7 @@ import imgImageSumiyaShaikh from "../../imports/Hero/00a8572b7ec30773d2ef8b31d4f
 
 export default function Hero() {
   return (
-    <section id="home" className="min-h-screen flex items-center px-6 py-16 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center px-6 py-24 md:py-32 relative overflow-hidden">
       {/* Clean gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a14] via-[#0B0B0F] to-[#1a0a2e]"></div>
       
@@ -23,7 +23,7 @@ export default function Hero() {
             className="flex justify-center md:justify-end md:pr-8"
           >
             {/* Image container - Centered portrait with reduced size */}
-            <div className="relative w-full max-w-[320px]">
+            <div className="relative w-full max-w-[280px] md:max-w-[320px]">
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
                 <img
                   src={imgImageSumiyaShaikh}
