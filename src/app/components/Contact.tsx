@@ -1,146 +1,208 @@
 import { motion } from "motion/react";
-import { Mail, Phone, Linkedin, Send } from "lucide-react";
+import { Mail, Linkedin, Send, MessageSquare } from "lucide-react";
 
 export default function Contact() {
-  const contactInfo = [
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "03368299388",
-      href: "tel:03368299388",
-      gradient: "from-purple-500 to-blue-500",
-    },
-    {
-      icon: Mail,
-      label: "Email",
-      value: "Sumiyashaikh37@gmail.com",
-      href: "mailto:Sumiyashaikh37@gmail.com",
-      gradient: "from-blue-500 to-cyan-500",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      value: "linkedin.com/in/sumiya88",
-      href: "https://www.linkedin.com/in/sumiya88/",
-      gradient: "from-purple-500 to-pink-500",
-    },
-  ];
-
   return (
-    <section id="contact" className="py-20 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" className="py-32 px-6 relative">
+      <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <h2
-            className="text-5xl lg:text-6xl mb-3"
+            className="text-5xl lg:text-6xl mb-6"
             style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 800 }}
           >
             <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Get in Touch
+              Let's Work Together
             </span>
           </h2>
           <p
-            className="text-white/70 text-lg max-w-2xl mx-auto"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
+            className="text-white/60 text-xl max-w-2xl mx-auto"
+            style={{ fontFamily: 'Inter, sans-serif' }}
           >
-            Let's build something powerful together
+            Let's build something amazing together
           </p>
         </motion.div>
 
-        {/* Contact Info Cards - Compact Grid */}
-        <div className="grid md:grid-cols-3 gap-4 mb-8 max-w-5xl mx-auto">
-          {contactInfo.map((contact, index) => {
-            const Icon = contact.icon;
-            return (
-              <motion.a
-                key={index}
-                href={contact.href}
-                target={contact.label === "LinkedIn" ? "_blank" : undefined}
-                rel={contact.label === "LinkedIn" ? "noopener noreferrer" : undefined}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="backdrop-blur-md bg-white/5 border border-white/10 hover:border-white/20 rounded-xl p-5 transition-all group"
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${contact.gradient} p-2 flex items-center justify-center`}>
-                    <Icon className="w-full h-full text-white" />
-                  </div>
-                  <div
-                    className="text-white/60 text-sm"
-                    style={{ fontFamily: 'Poppins, sans-serif' }}
-                  >
-                    {contact.label}
-                  </div>
-                </div>
-                <div
-                  className="text-white group-hover:text-purple-300 transition-colors text-sm"
-                  style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}
+        {/* Contact Form & Info */}
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="backdrop-blur-sm bg-white/5 border border-white/10 rounded-3xl p-8 shadow-xl"
+          >
+            <form className="space-y-6">
+              {/* Name */}
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-white mb-2 text-sm font-semibold"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
                 >
-                  {contact.value}
-                </div>
-              </motion.a>
-            );
-          })}
-        </div>
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="John Doe"
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                />
+              </div>
 
-        {/* CTA Section - Compact */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="max-w-3xl mx-auto"
-        >
-          <div className="backdrop-blur-md bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-2xl p-8 text-center">
-            <h4
-              className="text-2xl mb-3"
-              style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 700 }}
-            >
-              Ready to Start Your Project?
-            </h4>
-            <p
-              className="text-white/70 mb-6 max-w-xl mx-auto"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              Whether you need design, content, or growth strategies, I'm here to help your brand stand out.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <motion.a
-                href="https://wa.me/923368299388"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white"
-                style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}
+              {/* Email */}
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-white mb-2 text-sm font-semibold"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="john@example.com"
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                />
+              </div>
+
+              {/* Message */}
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-white mb-2 text-sm font-semibold"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  rows={5}
+                  placeholder="Tell me about your project..."
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all resize-none"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                ></textarea>
+              </div>
+
+              {/* Submit Button */}
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold flex items-center justify-center gap-2 shadow-lg shadow-purple-500/20 hover:shadow-xl hover:shadow-purple-500/30 transition-all"
+                style={{ fontFamily: 'Inter, sans-serif' }}
               >
-                Send a Message
+                Send Message
                 <Send className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                href="https://www.linkedin.com/in/sumiya88/"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-full backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all"
-                style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}
-              >
-                <Linkedin className="w-5 h-5" />
-                Connect on LinkedIn
-              </motion.a>
+              </motion.button>
+            </form>
+          </motion.div>
+
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
+            {/* Email Card */}
+            <div className="backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 p-3 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-full h-full text-purple-400" />
+                </div>
+                <div>
+                  <h3
+                    className="text-lg text-white mb-1"
+                    style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 700 }}
+                  >
+                    Email
+                  </h3>
+                  <a
+                    href="mailto:Sumiyashaikh37@gmail.com"
+                    className="text-white/70 hover:text-purple-400 transition-colors"
+                    style={{ fontFamily: 'Inter, sans-serif' }}
+                  >
+                    Sumiyashaikh37@gmail.com
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-        </motion.div>
+
+            {/* LinkedIn Card */}
+            <div className="backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 p-3 flex items-center justify-center flex-shrink-0">
+                  <Linkedin className="w-full h-full text-purple-400" />
+                </div>
+                <div>
+                  <h3
+                    className="text-lg text-white mb-1"
+                    style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 700 }}
+                  >
+                    LinkedIn
+                  </h3>
+                  <a
+                    href="https://www.linkedin.com/in/sumiya88/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/70 hover:text-purple-400 transition-colors"
+                    style={{ fontFamily: 'Inter, sans-serif' }}
+                  >
+                    linkedin.com/in/sumiya88
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* WhatsApp Card */}
+            <div className="backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 p-3 flex items-center justify-center flex-shrink-0">
+                  <MessageSquare className="w-full h-full text-purple-400" />
+                </div>
+                <div>
+                  <h3
+                    className="text-lg text-white mb-1"
+                    style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 700 }}
+                  >
+                    WhatsApp
+                  </h3>
+                  <a
+                    href="https://wa.me/923368299388"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/70 hover:text-purple-400 transition-colors"
+                    style={{ fontFamily: 'Inter, sans-serif' }}
+                  >
+                    +92 336 8299388
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Message */}
+            <div className="backdrop-blur-sm bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-2xl p-6">
+              <p
+                className="text-white/80 leading-relaxed"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                Have a project in mind? Let's discuss how we can work together to bring your vision to life.
+              </p>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

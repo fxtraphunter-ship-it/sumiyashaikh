@@ -1,28 +1,9 @@
 import { motion } from "motion/react";
-import { Award, Users, Zap } from "lucide-react";
 
 export default function About() {
-  const stats = [
-    {
-      icon: Award,
-      value: "5+",
-      label: "Core Skills",
-    },
-    {
-      icon: Users,
-      value: "50+",
-      label: "Projects Completed",
-    },
-    {
-      icon: Zap,
-      value: "100%",
-      label: "Client Satisfaction",
-    },
-  ];
-
   return (
-    <section id="about" className="py-20 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="py-32 px-6 relative">
+      <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -40,97 +21,17 @@ export default function About() {
             </span>
           </h2>
 
-          <div className="space-y-4 text-white/70 text-lg leading-relaxed max-w-4xl mx-auto" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          <div className="space-y-6 text-white/70 text-lg lg:text-xl leading-relaxed max-w-4xl mx-auto" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
             <p>
-              Sumiya Shaikh is a creative and multi-skilled professional with experience in graphic design, UI/UX design, social media management, content creation, and video editing.
+              I'm a creative professional who brings together design, strategy, and digital storytelling to create impactful brand experiences.
             </p>
             <p>
-              She focuses on creating engaging visual content, developing brand identities, and building digital experiences that support business growth.
+              With a strong focus on UI/UX design, graphic design, and content creation, I help businesses and individuals translate their vision into compelling visuals and growth-focused digital solutions.
             </p>
             <p>
-              With a passion for combining design aesthetics with strategic thinking, Sumiya helps brands stand out in the digital landscape through compelling visuals and growth-focused content strategies.
+              I believe great design isn't just about looking good—it's about solving problems, creating value, and making a lasting impact.
             </p>
           </div>
-
-          {/* CTA */}
-          <motion.a
-            href="https://www.linkedin.com/in/sumiya88/"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 mt-8 px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white"
-            style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}
-          >
-            Connect on LinkedIn
-          </motion.a>
-        </motion.div>
-
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="space-y-6"
-        >
-          {/* Stats Cards - Horizontal Row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                  className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center"
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 p-3 flex items-center justify-center mb-4">
-                    <Icon className="w-full h-full text-white" />
-                  </div>
-                  <div
-                    className="text-3xl mb-1"
-                    style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 800 }}
-                  >
-                    <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                      {stat.value}
-                    </span>
-                  </div>
-                  <div
-                    className="text-white/60 text-sm"
-                    style={{ fontFamily: 'Poppins, sans-serif' }}
-                  >
-                    {stat.label}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Additional Info Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="backdrop-blur-md bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-2xl p-8 max-w-4xl mx-auto text-center"
-          >
-            <h3
-              className="text-2xl mb-3"
-              style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 700 }}
-            >
-              Design Philosophy
-            </h3>
-            <p
-              className="text-white/70"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              Creating meaningful digital experiences that blend aesthetics with functionality, always keeping the end-user and business goals in focus.
-            </p>
-          </motion.div>
         </motion.div>
       </div>
     </section>

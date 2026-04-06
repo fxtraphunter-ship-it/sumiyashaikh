@@ -1,11 +1,12 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import ValueStrip from "../components/ValueStrip";
-import FeaturedWork from "../components/FeaturedWork";
-import Services from "../components/Services";
 import About from "../components/About";
 import Skills from "../components/Skills";
+import FeaturedWork from "../components/FeaturedWork";
+import Services from "../components/Services";
+import Experience from "../components/Experience";
 import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 import BackgroundGradient from "../components/BackgroundGradient";
 import PageLoader from "../components/PageLoader";
 import BackToTop from "../components/BackToTop";
@@ -17,12 +18,13 @@ export default function Home() {
       <BackgroundGradient />
       <Navbar />
       <Hero />
-      <ValueStrip />
-      <FeaturedWork />
-      <Services />
       <About />
       <Skills />
+      <FeaturedWork />
+      <Services />
+      <Experience />
       <Contact />
+      <Footer />
       <BackToTop />
     </div>
   );
