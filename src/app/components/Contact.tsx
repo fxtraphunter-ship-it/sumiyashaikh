@@ -130,7 +130,9 @@ export default function Contact() {
                 Whether you need design, content, or growth strategies, I'm here to help your brand stand out.
               </p>
               <motion.a
-                href="mailto:Sumiyashaikh37@gmail.com"
+                href="https://wa.me/923368299388"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white"

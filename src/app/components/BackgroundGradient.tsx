@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 export default function BackgroundGradient() {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Main gradient orbs */}
+      {/* Main gradient orbs - reduced intensity */}
       <motion.div
         animate={{
           x: [0, 100, 0],
@@ -15,7 +15,7 @@ export default function BackgroundGradient() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px]"
+        className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px]"
       />
 
       <motion.div
@@ -30,7 +30,7 @@ export default function BackgroundGradient() {
           ease: "easeInOut",
           delay: 2,
         }}
-        className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[120px]"
+        className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[150px]"
       />
 
       <motion.div
@@ -45,7 +45,7 @@ export default function BackgroundGradient() {
           ease: "easeInOut",
           delay: 4,
         }}
-        className="absolute bottom-1/4 left-1/3 w-[550px] h-[550px] bg-purple-600/15 rounded-full blur-[120px]"
+        className="absolute bottom-1/4 left-1/3 w-[450px] h-[450px] bg-purple-600/8 rounded-full blur-[150px]"
       />
 
       <motion.div
@@ -60,22 +60,7 @@ export default function BackgroundGradient() {
           ease: "easeInOut",
           delay: 6,
         }}
-        className="absolute bottom-0 right-1/3 w-[450px] h-[450px] bg-blue-600/15 rounded-full blur-[120px]"
-      />
-
-      {/* Smaller accent orbs */}
-      <motion.div
-        animate={{
-          x: [0, 30, 0],
-          y: [0, -30, 0],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-1/2 left-1/2 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[100px]"
+        className="absolute bottom-0 right-1/3 w-[350px] h-[350px] bg-blue-600/8 rounded-full blur-[150px]"
       />
     </div>
   );

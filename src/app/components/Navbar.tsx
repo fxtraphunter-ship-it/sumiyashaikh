@@ -23,9 +23,9 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto">
         <div
-          className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl px-6 py-4"
+          className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl px-6 py-4 shadow-2xl"
           style={{
-            boxShadow: "0 8px 32px 0 rgba(138, 43, 226, 0.1)",
+            boxShadow: "0 8px 32px 0 rgba(138, 43, 226, 0.15), inset 0 1px 1px 0 rgba(255, 255, 255, 0.1)",
           }}
         >
           <div className="flex items-center justify-between">
@@ -34,7 +34,7 @@ export default function Navbar() {
               className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"
               style={{ fontFamily: 'Urbanist, sans-serif' }}
             >
-              Sumiya
+              Sumiya Shaikh
             </motion.div>
 
             {/* Desktop Menu */}

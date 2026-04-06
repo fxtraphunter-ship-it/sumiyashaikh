@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
@@ -173,73 +173,78 @@ export default function FeaturedWork() {
         </motion.div>
 
         {/* Projects Grid */}
-        <motion.div
-          layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="group relative backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl overflow-hidden"
-            >
-              {/* Image */}
-              <div className="relative overflow-hidden aspect-video">
-                {project.isExternal ? (
-                  <ImageWithFallback
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                ) : (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeFilter}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                whileHover={{ y: -10 }}
+                className="group relative backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl overflow-hidden shadow-xl"
+              >
+                {/* Image */}
+                <div className="relative overflow-hidden aspect-video">
+                  {project.isExternal ? (
+                    <ImageWithFallback
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  ) : (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileHover={{ scale: 1 }}
-                    className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center"
-                  >
-                    <ExternalLink className="w-6 h-6 text-white" />
-                  </motion.div>
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileHover={{ scale: 1 }}
+                      className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center"
+                    >
+                      <ExternalLink className="w-6 h-6 text-white" />
+                    </motion.div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <h3
-                  className="text-xl mb-2"
-                  style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 700 }}
-                >
-                  {project.title}
-                </h3>
-                <p
-                  className="text-white/60 text-sm"
-                  style={{ fontFamily: 'Poppins, sans-serif' }}
-                >
-                  {project.description}
-                </p>
-              </div>
+                {/* Content */}
+                <div className="p-6">
+                  <h3
+                    className="text-xl mb-2"
+                    style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 700 }}
+                  >
+                    {project.title}
+                  </h3>
+                  <p
+                    className="text-white/60 text-sm"
+                    style={{ fontFamily: 'Poppins, sans-serif' }}
+                  >
+                    {project.description}
+                  </p>
+                </div>
 
-              {/* Gradient Border Effect */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/50 to-blue-500/50 blur-xl"></div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+                {/* Gradient Border Effect */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/50 to-blue-500/50 blur-xl"></div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
