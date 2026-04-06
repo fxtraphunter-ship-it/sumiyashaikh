@@ -6,11 +6,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Work", href: "#work" },
-    { name: "Services", href: "#services" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -21,20 +19,17 @@ export default function Navbar() {
       transition={{ duration: 0.6 }}
       className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
     >
-      <div className="max-w-7xl mx-auto">
-        <div
-          className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl px-6 py-4 shadow-2xl"
-          style={{
-            boxShadow: "0 8px 32px 0 rgba(138, 43, 226, 0.15), inset 0 1px 1px 0 rgba(255, 255, 255, 0.1)",
-          }}
-        >
+      <div className="max-w-6xl mx-auto">
+        <div className="backdrop-blur-xl bg-white/[0.03] border border-purple-500/30 rounded-xl px-6 py-3">
           <div className="flex items-center justify-between">
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"
-              style={{ fontFamily: 'Urbanist, sans-serif' }}
+              whileHover={{ scale: 1.02 }}
+              className="text-xl font-bold"
+              style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 700 }}
             >
-              Sumiya Shaikh
+              <span className="text-white">
+                Sumiya
+              </span>
             </motion.div>
 
             {/* Desktop Menu */}
@@ -43,10 +38,9 @@ export default function Navbar() {
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="text-white/80 hover:text-white transition-colors"
-                  style={{ fontFamily: 'Poppins, sans-serif' }}
+                  whileHover={{ y: -2 }}
+                  className="text-white/60 hover:text-white text-sm font-medium transition-colors"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
                 >
                   {item.name}
                 </motion.a>
@@ -56,9 +50,9 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden text-white"
+              className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
 
@@ -68,15 +62,15 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-4 flex flex-col gap-4"
+              className="md:hidden mt-4 pt-4 border-t border-white/10 flex flex-col gap-3"
             >
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-white/80 hover:text-white transition-colors"
-                  style={{ fontFamily: 'Poppins, sans-serif' }}
+                  className="text-white/60 hover:text-white hover:bg-white/5 px-3 py-2 rounded-lg transition-all text-sm"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
                 >
                   {item.name}
                 </a>

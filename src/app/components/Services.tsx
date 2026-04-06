@@ -1,64 +1,62 @@
 import { motion } from "motion/react";
-import { Palette, Pencil, Share2, Youtube, Sparkles } from "lucide-react";
+import { Palette, Pencil, Film, Pen, Award, Users, Briefcase } from "lucide-react";
 
 export default function Services() {
   const services = [
     {
       icon: Palette,
       title: "UI/UX Design",
-      description: "User-centered design solutions that enhance usability and create delightful experiences.",
+      description: "User-centered interfaces that enhance usability and deliver exceptional experiences.",
     },
     {
       icon: Pencil,
       title: "Graphic Design",
-      description: "Visual identity, branding, and marketing materials that make your brand stand out.",
+      description: "Cohesive visual identities that communicate your brand story effectively.",
     },
     {
-      icon: Share2,
-      title: "Social Media Design",
-      description: "Eye-catching social media graphics optimized for engagement and brand consistency.",
+      icon: Pen,
+      title: "Content Writing",
+      description: "Writing compelling narratives that engage and convert audiences.",
     },
     {
-      icon: Youtube,
-      title: "YouTube Automation",
-      description: "Complete YouTube growth systems including content strategy, optimization, and automation.",
-    },
-    {
-      icon: Sparkles,
-      title: "Content Creation",
-      description: "Compelling content and copy that tells your story and connects with your audience.",
+      icon: Film,
+      title: "YouTube & Video Editing",
+      description: "Developing content strategies that scale channels and maximize reach with professional video editing.",
     },
   ];
 
+  const stats = [
+    { icon: Briefcase, value: "50+", label: "Projects" },
+    { icon: Users, value: "30+", label: "Clients" },
+    { icon: Award, value: "5+", label: "Years" },
+  ];
+
   return (
-    <section id="services" className="py-32 px-6 relative">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
+    <section id="services" className="py-16 px-6 relative">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header - STANDARD importance */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-14"
         >
-          <h2
-            className="text-5xl lg:text-6xl mb-6"
-            style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 800 }}
-          >
-            <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <div className="mb-4">
+            <span className="text-purple-400/50 text-[11px] tracking-[0.25em] uppercase" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>
               Services
             </span>
-          </h2>
-          <p
-            className="text-white/60 text-xl max-w-2xl mx-auto"
-            style={{ fontFamily: 'Inter, sans-serif' }}
+          </div>
+          <h2
+            className="text-3xl sm:text-4xl lg:text-5xl leading-[1.15] tracking-[-0.01em]"
+            style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 600 }}
           >
-            Comprehensive creative solutions tailored to your needs
-          </p>
+            <span className="text-white">How I Can Help</span>
+          </h2>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Services Grid - STANDARD CARDS with balanced depth */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -67,29 +65,25 @@ export default function Services() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="group"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -7, transition: { duration: 0.3 } }}
               >
-                {/* Service Card */}
-                <div className="h-full backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-purple-500/30 transition-all duration-300 shadow-lg">
-                  {/* Icon */}
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 p-3 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Icon className="w-full h-full text-purple-400" />
+                {/* STANDARD Card with medium layering */}
+                <div className="h-full bg-white/[0.02] border border-white/10 rounded-xl p-6 hover:bg-white/[0.04] hover:border-white/20 transition-all duration-300 shadow-[0_12px_24px_rgba(0,0,0,0.15)] hover:shadow-[0_16px_32px_rgba(168,85,247,0.12)]">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 p-3 flex items-center justify-center mb-5 shadow-inner">
+                    <Icon className="w-full h-full text-purple-400" strokeWidth={1.5} />
                   </div>
 
-                  {/* Title */}
                   <h3
-                    className="text-xl mb-2 text-white"
-                    style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 700 }}
+                    className="text-lg text-white mb-3 leading-tight tracking-wide"
+                    style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 600 }}
                   >
                     {service.title}
                   </h3>
 
-                  {/* Description */}
                   <p
-                    className="text-white/60 text-sm leading-relaxed"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
+                    className="text-white/45 text-sm leading-relaxed"
+                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, letterSpacing: '0.01em' }}
                   >
                     {service.description}
                   </p>
@@ -98,6 +92,43 @@ export default function Services() {
             );
           })}
         </div>
+
+        {/* Stats - Enhanced depth and spacing */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-3 gap-10"
+        >
+          {stats.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={index}
+                className="text-center"
+              >
+                <div className="inline-flex w-12 h-12 rounded-xl bg-purple-500/10 p-3 items-center justify-center mb-4 shadow-[0_8px_16px_rgba(168,85,247,0.1)]">
+                  <Icon className="w-full h-full text-purple-400" strokeWidth={1.5} />
+                </div>
+                <div
+                  className="text-4xl mb-2.5 tracking-tight"
+                  style={{ fontFamily: 'Urbanist, sans-serif', fontWeight: 700 }}
+                >
+                  <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(168,85,247,0.3)]">
+                    {stat.value}
+                  </span>
+                </div>
+                <p
+                  className="text-white/40 text-sm tracking-wide"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                >
+                  {stat.label}
+                </p>
+              </div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );

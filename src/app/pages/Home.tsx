@@ -4,7 +4,6 @@ import About from "../components/About";
 import Skills from "../components/Skills";
 import FeaturedWork from "../components/FeaturedWork";
 import Services from "../components/Services";
-import Experience from "../components/Experience";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import BackgroundGradient from "../components/BackgroundGradient";
@@ -22,7 +21,6 @@ export default function Home() {
       <Skills />
       <FeaturedWork />
       <Services />
-      <Experience />
       <Contact />
       <Footer />
       <BackToTop />
