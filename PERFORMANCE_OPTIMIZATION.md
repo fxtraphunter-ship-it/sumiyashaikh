@@ -100,13 +100,7 @@ const BackToTop = lazy(() => import("../components/BackToTop"));
 
 ```typescript
 build: {
-  minify: 'terser',              // Aggressive minification
-  terserOptions: {
-    compress: {
-      drop_console: true,        // Remove console logs
-      drop_debugger: true,       // Remove debuggers
-    },
-  },
+  minify: 'esbuild',            // Fast native minification (no dependencies)
   rollupOptions: {
     output: {
       manualChunks: {

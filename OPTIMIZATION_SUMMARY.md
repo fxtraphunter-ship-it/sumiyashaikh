@@ -26,8 +26,7 @@
 - ✅ **Result**: Buttery smooth 60 FPS
 
 ### 5️⃣ **Bundle Optimization**
-- ✅ Terser minification enabled
-- ✅ Console logs removed in production
+- ✅ esbuild minification (fast, native)
 - ✅ Manual chunks for better caching
 - ✅ **Result**: Faster subsequent loads
 
