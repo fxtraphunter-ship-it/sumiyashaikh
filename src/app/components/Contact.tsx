@@ -10,7 +10,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
           <div className="mb-4">
@@ -32,48 +32,48 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        {/* CTA Buttons with premium depth */}
+        {/* CTA Buttons - Optimized shadows */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          {/* Email CTA - Primary */}
+          {/* Email CTA - Optimized shadow (reduced from 30px/40px to 20px/28px) */}
           <motion.a
             href="mailto:Sumiyashaikh37@gmail.com"
-            whileHover={{ scale: 1.04, y: -3 }}
+            whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="px-10 py-4 rounded-xl bg-gradient-to-r from-purple-600 via-purple-500 to-blue-600 text-white text-base flex items-center justify-center gap-3 shadow-[0_8px_30px_rgba(139,92,246,0.35)] hover:shadow-[0_12px_40px_rgba(139,92,246,0.5)] transition-all duration-300"
+            className="px-10 py-4 rounded-xl bg-gradient-to-r from-purple-600 via-purple-500 to-blue-600 text-white text-base flex items-center justify-center gap-3 shadow-[0_6px_20px_rgba(139,92,246,0.3)] hover:shadow-[0_8px_28px_rgba(139,92,246,0.4)] transition-all duration-300"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
           >
             <Mail className="w-5 h-5" />
             <span>Email</span>
           </motion.a>
 
-          {/* LinkedIn CTA */}
+          {/* LinkedIn CTA - Optimized shadow */}
           <motion.a
             href="https://www.linkedin.com/in/sumiya88/"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.04, y: -3 }}
+            whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="px-10 py-4 rounded-xl bg-white/5 border border-white/10 text-white text-base flex items-center justify-center gap-3 hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-[0_8px_16px_rgba(0,0,0,0.2)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.3)]"
+            className="px-10 py-4 rounded-xl bg-white/5 border border-white/10 text-white text-base flex items-center justify-center gap-3 hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-[0_6px_12px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_18px_rgba(0,0,0,0.25)]"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
             <Linkedin className="w-5 h-5" />
             <span>LinkedIn</span>
           </motion.a>
 
-          {/* WhatsApp CTA - Official Icon */}
+          {/* WhatsApp CTA - Optimized shadow */}
           <motion.a
             href="https://wa.me/923368299388?text=Hi%20Sumiya%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you!"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.04, y: -3 }}
+            whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="px-10 py-4 rounded-xl bg-white/5 border border-white/10 text-white text-base flex items-center justify-center gap-3 hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-[0_8px_16px_rgba(0,0,0,0.2)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.3)]"
+            className="px-10 py-4 rounded-xl bg-white/5 border border-white/10 text-white text-base flex items-center justify-center gap-3 hover:bg-white/10 hover:border-white/20 transition-all duration-300 shadow-[0_6px_12px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_18px_rgba(0,0,0,0.25)]"
             style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           >
             {/* WhatsApp Official Icon */}

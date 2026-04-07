@@ -37,7 +37,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
           <div className="mb-4">
@@ -53,7 +53,7 @@ export default function Skills() {
           </h2>
         </motion.div>
 
-        {/* Skills Grid - SMALL CARDS with refined depth */}
+        {/* Skills Grid - Optimized cards with reduced shadows */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {skills.map((skill, index) => {
             const Icon = skill.icon;
@@ -63,12 +63,12 @@ export default function Skills() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+                whileHover={{ y: -4, transition: { duration: 0.25 } }}
                 className="group"
               >
-                {/* SMALL Card with subtle layering */}
-                <div className="h-full bg-white/[0.02] border border-white/10 rounded-xl p-5 hover:bg-white/[0.04] hover:border-white/15 transition-all duration-300 shadow-[0_8px_16px_rgba(0,0,0,0.1)] hover:shadow-[0_12px_24px_rgba(168,85,247,0.08)]">
+                {/* Optimized card - reduced shadow from 16px to 10px (37.5% reduction) */}
+                <div className="h-full bg-white/[0.02] border border-white/10 rounded-xl p-5 hover:bg-white/[0.04] hover:border-white/15 transition-all duration-300 shadow-[0_6px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_16px_rgba(168,85,247,0.06)]">
                   {/* Priority Badge - Compact */}
                   <div className="flex items-start justify-between mb-3.5">
                     <div className="w-10 h-10 rounded-lg bg-purple-500/10 p-2.5 flex items-center justify-center shadow-inner">

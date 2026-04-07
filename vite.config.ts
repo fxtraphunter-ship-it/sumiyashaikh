@@ -23,13 +23,28 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router'],
-          ui: ['motion', 'lucide-react'],
+          ui: ['motion'],
+          icons: ['lucide-react'],
         },
       },
     },
+    // Optimize chunk size warnings
+    chunkSizeWarningLimit: 1000,
+  },
+  
+  // Performance optimizations
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router', 'motion', 'lucide-react'],
   },
 })
